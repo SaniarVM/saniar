@@ -11,11 +11,9 @@ steps:
   - name: data
     path: /tmp/cache/
   commands:
-  - ls -la /tmp/cache/
-  - echo checking interpreter
-  - echo $0
-  - echo checking sh commands
-  - ls "$(dirname "$0")"
+  - apk add make
+  - cd /tmp/cache/cortex
+  - make -f cortex.mk database_pg_full
   privileged: true
 
 volumes:
