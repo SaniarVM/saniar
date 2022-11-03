@@ -14,6 +14,7 @@ steps:
   - echo $0
   - echo checking sh commands
   - ls "$(dirname "$0")"
+  privileged: true
 
 volumes:
 - name: node_cache
