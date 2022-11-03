@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: Front auto test
+name: Front auto test //trusted repo
 
 steps:
 - name: jest_test
