@@ -15,7 +15,7 @@ steps:
   - apk add make
   - apk add git
   - cd cortex/
-  - make -f cortex.mk database_pg_full
+  - docker ps -a
   privileged: true
 
 volumes:
