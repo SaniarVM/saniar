@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: Front end auto test
+name: Front auto test
 
 steps:
 - name: jest_test
