@@ -8,10 +8,10 @@ steps:
   volumes:
   - name: socket
     path: /var/run.docker.socket
-  - name: node_cache
-    path: /drone/src/services/client/node_modules
+  - name: data
+    path: /drone/src/
   commands:
-  - ls -la
+  - cat data.txt
   - echo checking interpreter
   - echo $0
   - echo checking sh commands
@@ -19,9 +19,9 @@ steps:
   privileged: true
 
 volumes:
-- name: node_cache
+- name: data
   host:
-    path: /tmp/cache/drone/node_modules
+    path: /home/saniar/
 - name: unixsocket
   host:
     path: /var/run/docker.sock
