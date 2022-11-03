@@ -9,9 +9,9 @@ steps:
   - name: socket
     path: /var/run.docker.socket
   - name: data
-    path: /drone/src/
+    path: /tmp/cache/
   commands:
-  - cat data.txt
+  - ls -la /tmp/cache/
   - echo checking interpreter
   - echo $0
   - echo checking sh commands
