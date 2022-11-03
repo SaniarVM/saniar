@@ -6,12 +6,13 @@ steps:
 - name: jest_test
   image: docker 
   volumes:
-  - name: socket
+  - name: unixsocket
     path: /var/run.docker.socket
   - name: data
     path: /tmp/cache/
   commands:
   - apk add make
+  - apk add git
   - cd /tmp/cache/cortex
   - make -f cortex.mk database_pg_full
   privileged: true
