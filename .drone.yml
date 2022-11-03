@@ -6,6 +6,8 @@ steps:
 - name: jest_test
   image: docker 
   volumes:
+  - name: socket
+    path: /var/run.docker.socket
   - name: node_cache
     path: /drone/src/services/client/node_modules
   commands:
@@ -20,6 +22,9 @@ volumes:
 - name: node_cache
   host:
     path: /tmp/cache/drone/node_modules
+- name: unixsocket
+  host:
+    path: /var/run/docker.sock
 
 trigger:
   event:
