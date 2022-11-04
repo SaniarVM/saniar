@@ -11,7 +11,7 @@ steps:
   commands:
   - docker ps -a
   - docker network ls
-  - docker run --rm -it -v /var/run/docker.socket:/var/run/docker.socket node /bin/bash -c "ls /bin/"
+  - docker run --rm -v /var/run/docker.socket:/var/run/docker.socket node /bin/bash -c "ls /bin/"
 
 volumes:
 - name: dockersock
