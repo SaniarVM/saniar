@@ -13,7 +13,7 @@ steps:
   - ls -la
   - docker ps -a
   - docker network ls
-  - docker run --rm --network drone_net -v /home/saniar/:/app -w /app golang:1.18.3-buster /bin/bash -c "apk add npm && cd cortex && npm test"
+  - docker run --rm --network drone_net -v /home/saniar/:/app -w /app golang:1.18.3-buster /bin/bash -c "ls /bin/ && cd cortex && npm test"
 
 volumes:
 - name: dockersock
