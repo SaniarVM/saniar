@@ -11,20 +11,19 @@ steps:
   - name: data
     path: /tmp/cache/
   commands:
-  - cd /tmp/cache/
-  - apk add make
-  - apk add git
-  - cd cortex/
+  - pwd
+  - ls -la
   - docker ps -a
+  - docker network ls
   privileged: true
 
 volumes:
-- name: data
-  host:
-    path: /home/saniar/
 - name: unixsocket
   host:
     path: /var/run/docker.sock
+- name: data
+  host:
+    path: /home/saniar/
 
 trigger:
   event:
