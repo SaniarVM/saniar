@@ -10,6 +10,7 @@ steps:
     path: /var/run/docker.sock
   commands:
   - docker ps -a
+  - docker network ls
 
 volumes:
 - name: dockersock
