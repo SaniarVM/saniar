@@ -13,7 +13,7 @@ steps:
   - ls -la
   - docker ps -a
   - docker network ls
-  - docker run --network drone_net -v /home/saniar/:/app -w /app golang:1.18.3-buster /bin/bash -c "apt-get update && npm@latest && npm -v" #cd cortex && sh chrome.sh && npm test"
+  - docker run --network drone_net -v /home/saniar/:/app -w /app golang:1.18.3-buster /bin/bash -c "apt-get update && npm install -g npm@latest && npm -v" #cd cortex && sh chrome.sh && npm test"
 
 volumes:
 - name: dockersock
