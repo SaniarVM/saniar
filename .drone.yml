@@ -19,8 +19,7 @@ steps:
 
 volumes:
 - name: unixsocket
-  host:
-    path: /var/run/docker.sock
+  path: /var/run/docker.sock
 - name: data
   host:
     path: /home/saniar/
