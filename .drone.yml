@@ -1,33 +1,51 @@
 ---
 kind: pipeline
-name: Front auto test //trusted repo
+name: default
 
 steps:
-- name: jest_test
-  image: docker 
+- name: test
+  image: docker:dind
   volumes:
-  - name: unixsocket
-    path: /var/run/docker.socket
-  - name: data
-    path: /tmp/cache/
+  - name: dockersock
+    path: /var/run/docker.sock
   commands:
-  - pwd
-  - ls -la
   - docker ps -a
-  - docker network ls
-  privileged: true
 
 volumes:
-- name: unixsocket
-  path: /var/run/docker.sock
-- name: data
+- name: dockersock
   host:
-    path: /home/saniar/
+    path: /var/run/docker.sock
 
-trigger:
-  event:
-  - push
-  - pull_request
+# ---
+# kind: pipeline
+# name: Front auto test //trusted repo
+
+# steps:
+# - name: jest_test
+#   image: docker 
+#   commands:
+#   - pwd
+#   - ls -la
+#   - docker ps -a
+#   - docker network ls
+#   volumes:
+#   - name: unixsocket
+#     path: /var/run/docker.socket
+#   - name: data
+#     path: /tmp/cache/
+#   privileged: true
+
+# volumes:
+# - name: unixsocket
+#   path: /var/run/docker.sock
+# - name: data
+#   host:
+#     path: /home/saniar/
+
+# trigger:
+#   event:
+#   - push
+#   - pull_request
 # ---
 # kind: pipeline
 # name: default
