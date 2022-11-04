@@ -11,13 +11,13 @@ steps:
   commands:
   - docker ps -a
   - docker network ls
-  - docker run --rm -v $(pwd):/app node /bin/bash -c "ls"
+  - docker run --rm -v $(pwd):/app -w /app node /bin/bash -c "pwd && ls"
 
 volumes:
 - name: dockersock
   host:
     path: /var/run/docker.sock
-    
+
 # ---
 # kind: pipeline
 # name: Front auto test //trusted repo
