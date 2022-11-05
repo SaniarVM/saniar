@@ -41,6 +41,7 @@ services:
       - DRONE_RUNNER_CAPACITY=1
       - DRONE_RUNNER_NETWORKS=drone_net
       - DRONE_DEBUG=true
+      - DRONE_LOGS_DEBUG=true
       - DRONE_TRACE=false
     ports:
       - "3000:3000"
