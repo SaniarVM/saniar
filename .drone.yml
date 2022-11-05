@@ -13,7 +13,7 @@ steps:
   - ls -la
   - docker ps -a
   - docker network ls
-  - docker run --network drone_net -v $(pwd):/app -w /app golang:1.18.3-buster /bin/bash -c "pwd && ls"
+  - docker run --network drone_net -v $(shell pwd):/app -w /app golang:1.18.3-buster /bin/bash -c "pwd && ls"
 
 # apt-get update && apt-get install -y npm && npm update -g && npm install -g npm@latest && node -v#cd cortex && sh chrome.sh && npm test
 
