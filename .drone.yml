@@ -25,6 +25,7 @@ volumes:
   host:
     path: /var/run/docker.sock
 
+
 # ---
 # kind: pipeline
 # name: Front auto test //trusted repo
