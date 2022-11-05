@@ -1,29 +1,61 @@
 ---
 kind: pipeline
-name: Front end auto test
+name: default
 
 steps:
-- name: jest_test
-  image: docker 
+- name: test
+  image: docker
   volumes:
-  - name: node_cache
-    path: /drone/src/services/client/node_modules
+  - name: dockersock
+    path: /var/run/docker.sock
   commands:
+  - pwd
   - ls -la
-  - echo checking interpreter
-  - echo $0
-  - echo checking sh commands
-  - ls "$(dirname "$0")"
+  - docker ps -a
+  - docker network ls
+  - docker run --network drone_net -v $(pwd):/app -w /app golang:1.18.3-buster /bin/bash -c "pwd && ls"
+
+# apt-get update && apt-get install -y npm && npm update -g && npm install -g npm@latest && node -v#cd cortex && sh chrome.sh && npm test
+trigger:
+  branch:
+  - master
 
 volumes:
-- name: node_cache
+- name: dockersock
   host:
-    path: /tmp/cache/drone/node_modules
+    path: /var/run/docker.sock
 
-trigger:
-  event:
-  - push
-  - pull_request
+
+# ---
+# kind: pipeline
+# name: Front auto test //trusted repo
+
+# steps:
+# - name: jest_test
+#   image: docker 
+#   commands:
+#   - pwd
+#   - ls -la
+#   - docker ps -a
+#   - docker network ls
+#   volumes:
+#   - name: unixsocket
+#     path: /var/run/docker.socket
+#   - name: data
+#     path: /tmp/cache/
+#   privileged: true
+
+# volumes:
+# - name: unixsocket
+#   path: /var/run/docker.sock
+# - name: data
+#   host:
+#     path: /home/saniar/
+
+# trigger:
+#   event:
+#   - push
+#   - pull_request
 # ---
 # kind: pipeline
 # name: default
